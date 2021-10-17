@@ -8,12 +8,12 @@ $(document).ready(function () {
 
 function consultarById(id){
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/orthesis/orthesis/"+id,
+    url: "http://localhost:8080/api/Ortopedic/"+id,
     type: 'GET',
     dataType: 'json',
     success: function(respuesta){
-      if (respuesta.items.length==1){
-        llenarDatos(respuesta.items[0]);
+      if (JSON.stringify(respuesta.name) !== "null"){
+        llenarDatos(respuesta);
       }else{
         $("#modificar").hide();
         alert('No se encuentra la órtesis con el id '+id);
@@ -28,7 +28,9 @@ function consultarById(id){
 function llenarDatos(item){
   $("#id").val(item.id);
   $("#name").val(item.name);
+  $("#description").val(item.description);
   $("#brand").val(item.brand);
-  $("#model").val(item.model);
-  $("#category_id").val(item.category_id);
+  $("#year").val(item.year);
+  var option = "#category option[value='"+ item.category.id +"']";
+  $(option).attr("selected", true);
 }

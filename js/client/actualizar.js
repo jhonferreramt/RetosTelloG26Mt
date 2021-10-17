@@ -1,13 +1,14 @@
 function actualizar(){
   let client = {
-    id: +$("#id").val(),
+    idClient: +$("#id").val(),
     name: $("#name").val(),
     email: $("#email").val(),
-    age: +$("#age").val()
+    age: +$("#age").val(),
+    password: $("#password").val()
   };
     
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/client/client",
+    url: "http://localhos:8080/api/Client/update",
     type: 'PUT',
     dataType: 'json',
     headers: {

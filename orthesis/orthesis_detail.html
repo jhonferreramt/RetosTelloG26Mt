@@ -9,6 +9,7 @@
     <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="../js/orthesis/detalle.js"></script>
     <script type="text/javascript" src="../js/orthesis/actualizar.js"></script>
+    <script type="text/javascript" src="../js/orthesis/cargar_formulario.js"></script>
   </head>
   <body>
     <header class="p-3 mb-3 border-bottom">
@@ -20,9 +21,12 @@
     
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="../index.html" class="nav-link px-2 link-dark">Inicio</a></li>
+            <li><a href="../admin/index.html" class="nav-link px-2 link-dark">Administradores</a></li>
+            <li><a href="../category/index.html" class="nav-link px-2 link-dark">Categorias</a></li>
             <li><a href="../orthesis/index.html" class="nav-link px-2 link-secondary">Órtesis</a></li>
             <li><a href="../client/index.html" class="nav-link px-2 link-dark">Clientes</a></li>
             <li><a href="../message/index.html" class="nav-link px-2 link-dark">Mensajes</a></li>
+            <li><a href="../reservation/index.html" class="nav-link px-2 link-dark">Reservas</a></li>
             <li><a href="../index.html" class="nav-link px-2 link-dark">Cerrar sesión</a></li>
           </ul>
         </div>
@@ -35,19 +39,25 @@
       <div class="panel panel-default" style="text-align: center; width: 75%; margin: auto; padding: 20px;">
         <div class="row">
           <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <input type="number" class="form-control" id="id" name="id" placeholder="Id" readonly required>
+            <input type="hidden" class="form-control" id="id" name="id" placeholder="Id" readonly required>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <input type="input" class="form-control" id="name" name="name" placeholder="Nombre" required>
+            <input type="input" class="form-control" id="name" name="name" placeholder="Nombre" size="45" required>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <input type="input" class="form-control" id="brand" name="brand" placeholder="Marca" required>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Descripción" size="250" required>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <input type="number" class="form-control" id="model" name="model" placeholder="Modelo" required>
+            <input type="input" class="form-control" id="brand" name="brand" placeholder="Marca" size="45" required>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <input type="number" class="form-control" id="category_id" name="category_id" placeholder="Id de categoria" required>
+            <input type="number" class="form-control" id="year" name="year" placeholder="Año" required>
+          </div>
+          <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <select class="form-select" aria-label="Categoria" id="category" name="category">
+              </select>
+            </div>
           </div>
         </div>
         <div class="row">

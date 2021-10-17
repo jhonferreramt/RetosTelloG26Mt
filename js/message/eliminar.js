@@ -1,10 +1,10 @@
 function eliminar(identificador){
   let message = {
-    id: +identificador
+    idMessage: +identificador
   };
 
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/message/message",
+    url: "http://localhost:8080/api/Message/delete",
     type: 'DELETE',
     dataType: 'json',
     headers: {

@@ -1,11 +1,11 @@
 $(document).ready(function(){
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/orthesis/orthesis",
+    url: "http://localhost:8080/api/Ortopedic/all",
     type: 'GET',
     dataType: 'json',
       success: function(respuesta){
-        console.log(respuesta.items);
-        mostrarInformacion(respuesta.items);
+        console.log(respuesta);
+        mostrarInformacion(respuesta);
       },
       error: function (xhr, status) {
         alert('Se ha presentado un problema al consultar la información');
@@ -17,11 +17,11 @@ function mostrarInformacion(items){
   var tabla = '';
   for (var i=0; i < items.length; i++) {
     tabla += `<tr>
-             <td>${items[i].id}</td>
              <td>${items[i].name}</td>
+             <td>${items[i].description}</td>
              <td>${items[i].brand}</td>
-             <td>${items[i].model}</td>
-             <td>${items[i].category_id}</td>
+             <td>${items[i].year}</td>
+             <td>${items[i].category.name}</td>
              <td>
              <a onclick="eliminar(${items[i].id})" data-toggle="tooltip" data-placement="top" title="Eliminar órtesis" class="btn btn-danger">
              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">

@@ -8,12 +8,12 @@ $(document).ready(function () {
 
 function consultarById(id){
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/message/message/"+id,
+    url: "http://localhost:8080/api/Message/" + id,
     type: 'GET',
     dataType: 'json',
     success: function(respuesta){
-      if (respuesta.items.length==1){
-        llenarDatos(respuesta.items[0]);
+      if (JSON.stringify(respuesta.name) !== "null"){
+        llenarDatos(respuesta);
       }else{
         $("#modificar").hide();
         alert('No se encuentra el mensaje con el id '+id);
@@ -26,6 +26,10 @@ function consultarById(id){
 }
 
 function llenarDatos(item){
-  $("#id").val(item.id);
-  $("#messagetext").val(item.messagetext);
+  $("#id").val(item.idMessage);
+  $("#messagetext").val(item.messageText);
+  var optionOr = "#orthesis option[value='"+ item.ortopedic.id +"']";
+  $(optionOr).attr("selected", true);
+  var optionCli = "#client option[value='"+ item.client.idClient +"']";
+  $(optionCli).attr("selected", true);
 }

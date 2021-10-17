@@ -1,14 +1,16 @@
 function guardar(){
   let orthesis = {
-    id: +$("#id").val(),
     name: $("#name").val(),
+    description: $("#description").val(),
     brand: $("#brand").val(),
-    model: +$("#model").val(),
-    category_id: +$("#category_id").val()
+    year: +$("#year").val(),
+    category: {
+      id: +$("#category").val()
+    }
   };
 
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/orthesis/orthesis",
+    url: "http://localhost:8080/api/Ortopedic/save",
     type: 'POST',
     dataType: 'json',
     headers: {

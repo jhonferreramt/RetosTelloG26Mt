@@ -1,11 +1,16 @@
 function guardar(){
   let message = {
-    id: +$("#id").val(),
-    messagetext: $("#messagetext").val()
+    messageText: $("#messagetext").val(),
+    ortopedic: {
+      id: +$("#orthesis").val()
+    },
+    client: {
+      idClient: +$("#client").val()
+    }
   };
 
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/message/message",
+    url: "http://localhost:8080/api/Message/save",
     type: 'POST',
     dataType: 'json',
     headers: {

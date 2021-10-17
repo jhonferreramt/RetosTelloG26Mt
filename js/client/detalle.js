@@ -8,12 +8,12 @@ $(document).ready(function () {
 
 function consultarById(id){
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/client/client/"+id,
+    url: "http://localhost:8080/api/Client/"+id,
     type: 'GET',
     dataType: 'json',
     success: function(respuesta){
-      if (respuesta.items.length==1){
-        llenarDatos(respuesta.items[0]);
+      if (JSON.stringify(respuesta.name) !== "null"){
+        llenarDatos(respuesta);
       }else{
         $("#modificar").hide();
         alert('No se encuentra el cliente con el id '+id);
@@ -26,8 +26,9 @@ function consultarById(id){
 }
 
 function llenarDatos(item){
-  $("#id").val(item.id);
+  $("#id").val(item.idClient);
   $("#name").val(item.name);
   $("#email").val(item.email);
   $("#age").val(item.age);
+  $("#password").val(item.password);
 }

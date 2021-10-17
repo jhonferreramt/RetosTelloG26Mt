@@ -1,13 +1,13 @@
 function guardar(){
   let client = {
-    id: +$("#id").val(),
     name: $("#name").val(),
     email: $("#email").val(),
-    age: +$("#age").val()
+    age: +$("#age").val(),
+    password: $("#password").val()
   };
 
   $.ajax({
-    url: "https://ga46e7de0098fb0-alquiler.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/client/client",
+    url: "http://localhost:8080/api/Client/save",
     type: 'POST',
     dataType: 'json',
     headers: {
