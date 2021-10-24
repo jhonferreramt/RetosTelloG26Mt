@@ -18,12 +18,36 @@ function mostrarInformacion(items){
   for (var i=0; i < items.length; i++) {
     var date1= new Date(items[i].startDate);
     var date2= new Date(items[i].devolutionDate);
-    var startDate = date1.getUTCFullYear() + "-" + (date1.getUTCMonth()+1) + "-" + date1.getUTCDate();
-    var devolutionDate = date2.getUTCFullYear() + "-" + (date2.getUTCMonth()+1) + "-" + date2.getUTCDate();
 
+    var startDate = date1.getUTCFullYear() + "-";
+    if ((date1.getUTCMonth()+1) < 10) { 
+      startDate += "0";
+    }
+    startDate += (date1.getUTCMonth()+1) + "-";
+    if (date1.getUTCDate()+1 < 10) { 
+      startDate += "0";
+    }
+    startDate += date1.getUTCDate();
+        
+    var devolutionDate = date2.getUTCFullYear() + "-";
+    if ((date2.getUTCMonth()+1) < 10) { 
+      devolutionDate += "0";
+    }
+    devolutionDate += (date2.getUTCMonth()+1) + "-";
+    if (date2.getUTCDate()+1 < 10) { 
+      devolutionDate += "0";
+    }
+    devolutionDate += date2.getUTCDate();
+     
     var status = "";
     if (items[i].status === "created") {
       status = "Creada";
+    } else if (items[i].status === "programmed") {
+      status = "Programada";
+    } else if (items[i].status === "canceled") {
+      status = "Cancelada";
+    } else if (items[i].status === "completed") {
+      status = "Realizada";
     }
 
     tabla += `<tr>

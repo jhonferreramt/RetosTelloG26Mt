@@ -1,4 +1,36 @@
 function actualizar(){
+  if (validar()) {
+    enviar();
+  }
+}
+
+function validar() {
+  var name = document.getElementById("name").value;
+  var description = document.getElementById("description").value;
+
+  if (name == null || name == "" || description == null || description == "") {
+    alert("Los campos en el formulario son requeridos");
+    document.getElementById("name").focus();
+    document.getElementById("description").focus();
+    return false;
+  } 
+  
+  if (name.length > 45) {
+    alert("El nombre debe tener menos de 45 carácteres");
+    document.getElementById("name").focus();
+    return false;
+  }
+
+  if (description.length > 250) {
+    alert("La descripción debe tener menos de 250 carácteres");
+    document.getElementById("description").focus();
+    return false;
+  }
+
+  return true;
+}
+
+function enviar(){  
   let category = {
     id: +$("#id").val(),
     name: $("#name").val(),

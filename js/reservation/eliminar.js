@@ -13,7 +13,7 @@ function eliminarReservation(id_reservation){
   };
 
   $.ajax({
-    url: "http://localhost:8080/api/Reservation/delete",
+    url: "http://localhost:8080/api/Reservation/"+id_reservation,
     type: 'DELETE',
     dataType: 'json',
     headers: {
@@ -35,7 +35,7 @@ function eliminarScore(id_score){
   };
 
   $.ajax({
-    url: "http://localhost:8080/api/Score/delete",
+    url: "http://localhost:8080/api/Score/"+id_score,
     type: 'DELETE',
     dataType: 'json',
     headers: {

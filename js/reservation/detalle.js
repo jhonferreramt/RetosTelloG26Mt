@@ -28,20 +28,34 @@ function consultarById(id){
 function llenarDatos(item){
   var date1= new Date(item.startDate);
   var date2= new Date(item.devolutionDate);
-  var startDate = date1.getUTCFullYear() + "-" + (date1.getUTCMonth()+1) + "-" + date1.getUTCDate();
-  var devolutionDate = date2.getUTCFullYear() + "-" + (date2.getUTCMonth()+1) + "-" + date2.getUTCDate();
 
-  var status = "";
-  if (item.status === "created") {
-    status = "Creada";
+  var startDate = date1.getUTCFullYear() + "-";
+  if ((date1.getUTCMonth()+1) < 10) { 
+    startDate += "0";
   }
+  startDate += (date1.getUTCMonth()+1) + "-";
+  if (date1.getUTCDate()+1 < 10) { 
+    startDate += "0";
+  }
+  startDate += date1.getUTCDate();
+      
+  var devolutionDate = date2.getUTCFullYear() + "-";
+  if ((date2.getUTCMonth()+1) < 10) { 
+    devolutionDate += "0";
+  }
+  devolutionDate += (date2.getUTCMonth()+1) + "-";
+  if (date2.getUTCDate()+1 < 10) { 
+    devolutionDate += "0";
+  }
+  devolutionDate += date2.getUTCDate();
 
   $("#id").val(item.idReservation);
   $("#startDate").val(startDate);
   $("#devolutionDate").val(devolutionDate);
-  $("#status").val(status);
   var optionOr = "#orthesis option[value='"+ item.ortopedic.id +"']";
   $(optionOr).attr("selected", true);
   var optionCli = "#client option[value='"+ item.client.idClient +"']";
   $(optionCli).attr("selected", true);
+  var optionSta = "#status option[value='"+ item.status +"']";
+  $(optionSta).attr("selected", true);
 }
