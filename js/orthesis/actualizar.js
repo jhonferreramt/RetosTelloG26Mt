@@ -70,7 +70,7 @@ function enviar(){
   };
     
   $.ajax({
-    url: "http://localhost:8080/api/Ortopedic/update",
+    url: "/api/Ortopedic/update",
     type: 'PUT',
     dataType: 'json',
     headers: {

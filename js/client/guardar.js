@@ -63,7 +63,7 @@ function enviar(){
   };
 
   $.ajax({
-    url: "http://localhost:8080/api/Client/save",
+    url: "/api/Client/save",
     type: 'POST',
     dataType: 'json',
     headers: {

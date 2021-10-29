@@ -2,8 +2,9 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
+    <base href="/"/>    
     <title>Programa de alquiler</title>
-    <link rel="shortcut icon" href="img/icono.png">    
+    <link rel="shortcut icon" href="img/icono.png">   
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/bootstrap-responsive.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all">  
@@ -27,7 +28,7 @@
             <li class="nav-item active">
               <a class="nav-link" href="./index.html">Inicio<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="authenticated nav-item dropdown">
               <!-- <a class="nav-link dropdown-toggle" href="./admin/index.html" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
               <a class="nav-link dropdown-item" href="./admin/index.html" id="navbarDropdown3" role="button" aria-haspopup="true" aria-expanded="false">
                   Administradores
@@ -37,27 +38,27 @@
                 <div class="dropdown-divider"></div>
               </div> -->
             </li>
-            <li class="nav-item dropdown">
+            <li class="authenticated nav-item dropdown">
               <a class="nav-link dropdown-item" href="./category/index.html" id="navbarDropdown6" role="button" aria-haspopup="true" aria-expanded="false">
                 Categorias
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="authenticated nav-item dropdown">
               <a class="nav-link dropdown-item" href="./orthesis/index.html" id="navbarDropdown6" role="button" aria-haspopup="true" aria-expanded="false">
                 Órtesis
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="authenticated nav-item dropdown">
               <a class="nav-link dropdown-item" href="./client/index.html" id="navbarDropdown6" role="button" aria-haspopup="true" aria-expanded="false">
                 Clientes
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="authenticated nav-item dropdown">
               <a class="nav-link dropdown-item" href="./message/index.html" id="navbarDropdown6" role="button" aria-haspopup="true" aria-expanded="false">
                 Mensajes
               </a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="authenticated nav-item dropdown">
               <a class="nav-link dropdown-item" href="./reservation/index.html" id="navbarDropdown6" role="button" aria-haspopup="true" aria-expanded="false">
                 Reservas
               </a>
@@ -65,24 +66,52 @@
           </ul>
   
           <ul class="navbar-nav px-3">
-            <li class="nav-item dropdown">
+            <li class="authenticated nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Mi usuario
+                <span id="user"></span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                <a class="dropdown-item" href="./index.html">Cerrar sesión</a>
+                <a class="dropdown-item" onclick="logout()">Cerrar sesión</a>
               </div>
             </li>          
 
-            <li class="nav-item text-nowrap">
-            <a class="nav-link" href="./index.html">Iniciar sesión</a>
+            <li class="nav-item text-nowrap unauthenticated">
+                <a class="nav-link" href="./oauth2/authorization/github">Iniciar sesión</a>
             </li>
           </ul>
         </div>
       </nav>
     </header>
     <main role="main" class="container">
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $.ajax({
+            url: "/user",
+            type: 'GET',
+            dataType: 'json',
+              success: function(respuesta){
+                console.log("get");
+                console.log(respuesta);
+                $("#user").html(respuesta.name);
+                $(".unauthenticated").hide();
+                $(".authenticated").show();
+              },
+              error: function (xhr, status) {
+                $(".unauthenticated").show();
+                $(".authenticated").hide();
+              }
+          });
+        });
 
+        var logout = function () {
+            $.post("/logout", function () {
+                $("#user").html('');
+                $(".unauthenticated").show();
+                $(".authenticated").hide();
+            })
+            return true;
+        }
+      </script>
     </main>
     <footer class="panel-heading container" style="text-align: center;">
       <small class="d-block mb-3 text-muted">Copyright &#169; 2021</small>

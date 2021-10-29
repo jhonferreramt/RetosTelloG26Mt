@@ -65,7 +65,7 @@ function enviar(){
   };
 
   $.ajax({
-    url: "http://localhost:8080/api/Reservation/save",
+    url: "/api/Reservation/save",
     type: 'POST',
     dataType: 'json',
     headers: {

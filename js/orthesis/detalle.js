@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 function consultarById(id){
   $.ajax({
-    url: "http://localhost:8080/api/Ortopedic/"+id,
+    url: "/api/Ortopedic/"+id,
     type: 'GET',
     dataType: 'json',
     success: function(respuesta){
@@ -31,6 +31,8 @@ function llenarDatos(item){
   $("#description").val(item.description);
   $("#brand").val(item.brand);
   $("#year").val(item.year);
-  var option = "#category option[value='"+ item.category.id +"']";
-  $(option).attr("selected", true);
+  //var option = "#category option[text='"+ item.category.id +"']";
+  //$(option).attr("selected",true);
+  var opciones = `<option value="${item.category.id}" selected>${item.category.name}</option>`;
+  $("#category").append(opciones);
 }

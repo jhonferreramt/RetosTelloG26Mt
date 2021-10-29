@@ -55,7 +55,7 @@ function enviar(){
   };
     
   $.ajax({
-    url: "http://localhost:8080/api/Admin/update",
+    url: "/api/Admin/update",
     type: 'PUT',
     dataType: 'json',
     headers: {

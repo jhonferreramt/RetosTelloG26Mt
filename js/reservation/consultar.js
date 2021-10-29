@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $.ajax({
-    url: "http://localhost:8080/api/Reservation/all",
+    url: "/api/Reservation/all",
     type: 'GET',
     dataType: 'json',
       success: function(respuesta){
@@ -44,7 +44,7 @@ function mostrarInformacion(items){
       status = "Creada";
     } else if (items[i].status === "programmed") {
       status = "Programada";
-    } else if (items[i].status === "canceled") {
+    } else if (items[i].status === "cancelled") {
       status = "Cancelada";
     } else if (items[i].status === "completed") {
       status = "Realizada";

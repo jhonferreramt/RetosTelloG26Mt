@@ -73,7 +73,7 @@ function enviar(){
   };
     
   $.ajax({
-    url: "http://localhost:8080/api/Reservation/update",
+    url: "/api/Reservation/update",
     type: 'PUT',
     dataType: 'json',
     headers: {

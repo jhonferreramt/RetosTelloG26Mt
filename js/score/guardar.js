@@ -48,7 +48,7 @@ function enviar(){
   };
 
   $.ajax({
-    url: "http://localhost:8080/api/Score/save",
+    url: "/api/Score/save",
     type: 'POST',
     dataType: 'json',
     headers: {

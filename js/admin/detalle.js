@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 function consultarById(id){
   $.ajax({
-    url: "http://localhost:8080/api/Admin/"+id,
+    url: "/api/Admin/"+id,
     type: 'GET',
     dataType: 'json',
     success: function(respuesta){

@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 function consultarOrthesis(){
   $.ajax({
-    url: "http://localhost:8080/api/Ortopedic/all",
+    url: "/api/Ortopedic/all",
     type: 'GET',
     dataType: 'json',
       success: function(respuesta){
@@ -27,7 +27,7 @@ function mostrarListado(items){
 
 function consultarClient(){
   $.ajax({
-    url: "http://localhost:8080/api/Client/all",
+    url: "/api/Client/all",
     type: 'GET',
     dataType: 'json',
       success: function(respuesta){

@@ -49,7 +49,7 @@ function enviar(){
   };
 
   $.ajax({
-    url: "http://localhost:8080/api/Score/update",
+    url: "/api/Score/update",
     type: 'PUT',
     dataType: 'json',
     headers: {

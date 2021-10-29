@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $.ajax({
-    url: "http://localhost:8080/api/Client/all",
+    url: "/api/Client/all",
     type: 'GET',
     dataType: 'json',
       success: function(respuesta){
@@ -21,6 +21,11 @@ function mostrarInformacion(items){
              <td>${items[i].email}</td>
              <td>${items[i].age}</td>
              <td>
+             <a onclick="eliminar(${items[i].idClient})" data-toggle="tooltip" data-placement="top" title="Eliminar cliente" class="btn btn-danger">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+             </svg>
+             </a>        
              <a href="./client_detail.html?id=${items[i].idClient}" data-toggle="tooltip" data-placement="top" title="Ver detalles" class="btn btn-primary">
              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>

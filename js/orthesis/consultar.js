@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $.ajax({
-    url: "http://localhost:8080/api/Ortopedic/all",
+    url: "/api/Ortopedic/all",
     type: 'GET',
     dataType: 'json',
       success: function(respuesta){

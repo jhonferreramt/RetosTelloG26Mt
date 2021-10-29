@@ -54,7 +54,7 @@ function enviar(){
   };
 
   $.ajax({
-    url: "http://localhost:8080/api/Admin/save",
+    url: "/api/Admin/save",
     type: 'POST',
     dataType: 'json',
     headers: {

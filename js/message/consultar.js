@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $.ajax({
-    url: "http://localhost:8080/api/Message/all",
+    url: "/api/Message/all",
     type: 'GET',
     dataType: 'json',
       success: function(respuesta){

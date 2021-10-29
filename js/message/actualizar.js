@@ -52,7 +52,7 @@ function enviar(){
   };
     
   $.ajax({
-    url: "http://localhost:8080/api/Message/update",
+    url: "/api/Message/update",
     type: 'PUT',
     dataType: 'json',
     headers: {

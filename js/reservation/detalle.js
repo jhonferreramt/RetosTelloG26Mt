@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 function consultarById(id){
   $.ajax({
-    url: "http://localhost:8080/api/Reservation/" + id,
+    url: "/api/Reservation/" + id,
     type: 'GET',
     dataType: 'json',
     success: function(respuesta){
@@ -52,10 +52,14 @@ function llenarDatos(item){
   $("#id").val(item.idReservation);
   $("#startDate").val(startDate);
   $("#devolutionDate").val(devolutionDate);
-  var optionOr = "#orthesis option[value='"+ item.ortopedic.id +"']";
-  $(optionOr).attr("selected", true);
-  var optionCli = "#client option[value='"+ item.client.idClient +"']";
-  $(optionCli).attr("selected", true);
+  //var optionOr = "#orthesis option[value='"+ item.ortopedic.id +"']";
+  //$(optionOr).attr("selected", true);
+  //var optionCli = "#client option[value='"+ item.client.idClient +"']";
+  //$(optionCli).attr("selected", true);
+  var opcionesOr = `<option value="${item.ortopedic.id}" selected>${item.ortopedic.name}</option>`;
+  $("#orthesis").append(opcionesOr);  
+  var opcionesCli = `<option value="${item.client.idClient}">${item.client.idClient} - ${item.client.name}</option>`;
+  $("#client").append(opcionesCli); 
   var optionSta = "#status option[value='"+ item.status +"']";
   $(optionSta).attr("selected", true);
 }
